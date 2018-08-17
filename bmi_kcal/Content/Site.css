@@ -1,6 +1,13 @@
 ﻿body {
-    padding-top: 50px;
+    /*padding-top: 50px;*/
     padding-bottom: 20px;
+    /*background: -webkit-linear-gradient(82deg, #ff9505 30%, #016fb9 30.1%);
+    background: linear-gradient(82deg, #ff9505 30%, #016fb9 30.1%);*/
+    /*background: linear-gradient(rgb(255, 106, 0), rgba(98, 101, 228, 0.21)), url('img/pexels-photo-864939.jpeg');*/
+    background: linear-gradient(85deg, #016fb9 35%, rgba(255, 255, 255, 0.00) 30.1%), url('img/pexels-photo-864939.jpeg');
+}
+html {
+    height: 100%;
 }
 
 /* Set padding to keep content from hitting the edges */
