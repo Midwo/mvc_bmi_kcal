@@ -3,14 +3,19 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Michał Dwojak</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/bmi.js"></script>
+    <link href="~/Fonts/fontawesome-free-5.2.0-web/css/all.css" rel="stylesheet" />
+
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-            @Html.ActionLink("www.mdwojak.pl", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        <a class="navbar-brand" href="@Url.Action("Index","Home")">
+            <img src="~/favicon.ico" width="30" height="30" class="d-inline-block align-top" alt="">
+            mdwojak.pl
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -19,10 +24,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="@Url.Action("Index", "Home")">Oblicz BMI<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="@Url.Action("bmi", "Home")">Oblicz BMI<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  href="@Url.Action("About", "Home")">Zobacz kalorykę</a>
+                    <a class="nav-link" href="@Url.Action("kcal", "Home")">Zobacz kalorykę</a>
                 </li>
             </ul>
 
@@ -31,12 +36,18 @@
 
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
 
+
+    </div>
+    <!-- Footer -->
+    <footer class="footer">
+
+
+            <span class="text-muted">&copy; @DateTime.Now.Year - Dwojak Michał. <a href="https://www.mdwojak.pl/">www.mdwojak.pl</a></span>
+
+        </footer>
+
+    <!-- Footer -->
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
