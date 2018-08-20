@@ -58,6 +58,12 @@ textarea {
     margin-bottom: 40px;
     margin-top: 40px;
 }
+
+#leftcontentCPM {
+    margin-left: 1.5%;
+    margin-bottom: 80px;
+    margin-top: 40px;
+}
 #leftcontent2 {
     margin-left: 1.5%;
     margin-bottom: 60px;
@@ -133,4 +139,15 @@ margin-top: 20px;
     right: 0px;
     top: 0px;
     padding-bottom: 0.5rem;
+    z-index: 1;
 }
+
+
+
+.radioCPMBRM
+{
+   text-align: left;
+   padding: 0px 10px 0px 10px;
+
+}
+

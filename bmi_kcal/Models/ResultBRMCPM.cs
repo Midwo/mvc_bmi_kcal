@@ -6,16 +6,16 @@ using System.Web;
 
 namespace bmi_kcal.Models
 {
-    public class ResultBRMCPI
+    public class ResultBRMCPM
     {
         [Key]
-        public int ResultBRMCPIID { get; set; }
+        public int ResultBRMCPMID { get; set; }
 
         [Required]
         public decimal ResultBRMValue { get; set; }
 
         [Required]
-        public decimal ResultCPIValue { get; set; }
+        public decimal ResultCPMValue { get; set; }
 
         [Required]
         public DateTime SaveDate { get; set; }
@@ -31,6 +31,10 @@ namespace bmi_kcal.Models
 
         [Required]
         public string SelectedActivity { get; set; }
+
+
+        [Required]
+        public string Gender { get; set; }
 
     }
 }

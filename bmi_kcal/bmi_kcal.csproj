@@ -153,13 +153,12 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ResultBMIsController.cs" />
-    <Compile Include="Controllers\ResultBRMCPIsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DalContext.cs" />
     <Compile Include="Models\ResultBMI.cs" />
-    <Compile Include="Models\ResultBRMCPI.cs" />
+    <Compile Include="Models\ResultBRMCPM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1524,6 +1523,7 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\cpm.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -1651,11 +1651,6 @@
     <Content Include="Views\ResultBMIs\Details.cshtml" />
     <Content Include="Views\ResultBMIs\Edit.cshtml" />
     <Content Include="Views\ResultBMIs\Index.cshtml" />
-    <Content Include="Views\ResultBRMCPIs\Create.cshtml" />
-    <Content Include="Views\ResultBRMCPIs\Delete.cshtml" />
-    <Content Include="Views\ResultBRMCPIs\Details.cshtml" />
-    <Content Include="Views\ResultBRMCPIs\Edit.cshtml" />
-    <Content Include="Views\ResultBRMCPIs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

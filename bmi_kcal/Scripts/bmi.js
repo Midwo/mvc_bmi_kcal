@@ -1,6 +1,7 @@
 ﻿var noEnterData;
 var bmi;
 function Bmi() {
+    var resultstatus;
     noEnterData = false;
     var growth = document.getElementById("growth").value;
     var weight = document.getElementById("weight").value;
@@ -12,27 +13,35 @@ function Bmi() {
         //alert(bmi);
         if (bmi < 16.0) {
             textInFirstContentModal = '<h5 class="text-center">Wynik ten wskazuje na: "wygłodzenie". Musisz o siebie zadbać i jak najszybciej zwiększyć swoją wagę</h5 ><i id="ScoreContent" class="far fa-frown-open fa-4x"></i>';
+            resultstatus = "wygłodzenie";
         }
         else if (bmi <= 16.99) {
             textInFirstContentModal = '<h5 class="text-center">Wynik ten wskazuje na: "wychuczenie". Musisz o siebie zadbać i znacznie zwiększyć swoją wagę</h5 ><i id="ScoreContent" class="far fa-frown-open fa-4x"></i>';
+            resultstatus = "wychuczenie";
         }
         else if (bmi <= 18.49) {
             textInFirstContentModal = '<h5 class="text-center">Wynik ten wskazuje na: "niedowagę". Musisz o siebie zadbać i odrobinę zwiększyć swoją wagę</h5 ><i id="ScoreContent" class="far fa-frown-open fa-4x"></i>';
+            resultstatus = "niedowaga";
         }
         else if (bmi <= 24.99) {
             textInFirstContentModal = '<h5 class="text-center">Wynik ten wskazuje na: "waga prawidłowa". Twój wynik jest idealny, prawidłowy! Nie musisz zwiększać swojej wagi ani też zmniejszać</h5 ><i id="ScoreContent" class="far fa-smile-wink fa-4x"></i>';
+            resultstatus = "waga prawidłowa";
         }
         else if (bmi <= 29.99) {
             textInFirstContentModal = '<h5 class="text-center">Wynik ten wskazuje na: "nadwaga". Musisz o siebie zadbać i odrobinę zmniejszyć swoją wagę.</h5 ><i id="ScoreContent" class="far fa-frown-open fa-4x"></i>';
+            resultstatus = "nadwaga";
         }
         else if (bmi <= 34.99) {
             textInFirstContentModal = '<h5 class="text-center">Wynik ten wskazuje na: "otyłość pierwszego stopnia". Musisz o siebie zadbać i zmniejszyć swoją wagę.</h5 ><i id="ScoreContent" class="far fa-frown-open fa-4x"></i>';
+            resultstatus = "otyłość pierwszego stopnia";
         }
         else if (bmi <= 39.99) {
             textInFirstContentModal = '<h5 class="text-center">Wynik ten wskazuje na: "otyłość drugiego stopnia". Musisz o siebie zadbać i jak najszybceij zmniejszyć swoją wagę.</h5 ><i id="ScoreContent" class="far fa-frown-open fa-4x"></i>';
+            resultstatus = "otyłość drugiego stopnia";
         }
         else {
             textInFirstContentModal = '<h5 class="text-center">Wynik ten wskazuje na: "otyłość trzeciego stopnia". Musisz o siebie zadbać i jak najszybciej zmniejszyć swoją wagę.</h5 ><i id="ScoreContent" class="far fa-frown-open fa-4x"></i>';
+            resultstatus = "otyłość trzeciego stopnia";
         }
     }
     else {
@@ -41,10 +50,33 @@ function Bmi() {
     }
     if (noEnterData == false) {
         textInFirstContentModal = '<h4 class="text-center">Twój wynik BMI, to: ' + bmi + '</h4>' + textInFirstContentModal;
+        var std = {};
+        // std.Number = $("#Number").val();
+        std.ResultBMIValue = bmi;
+        std.ResultBMIName = resultstatus;
+        std.Weight = weight;
+        std.Growth = growth;
+        $.ajax({
+            type: "POST",
+            url: "/Home/NewRecordBMI", // the URL of the controller action method
+            data: '{std: ' + JSON.stringify(std) + '}',
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (result) {
+             // nothing doing
+            },
+            error: function (req, status, error) {
+                alert("Błąd wstawiania danych");
+            }
+        });
     }
     document.getElementById("infocontent1").innerHTML = textInFirstContentModal;
     $('#ModalInfoCenter').modal('show');
+
+   
+
 }
+
 $(document).ready(function () {
     $('#ModalInfoCenter').on('hidden.bs.modal', function () {
         if (noEnterData == false) {

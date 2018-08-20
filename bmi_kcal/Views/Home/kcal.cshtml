@@ -1,17 +1,110 @@
 ﻿@{
-    ViewBag.Title = "kcal";
+    ViewBag.Title = "Oblicz CPM/BRM";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<div class="row" id="leftcontentCPM">
+    <div class="col-md-3">
+        <div class="card1 text-center">
+            <div class="card-block">
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+                <form id="bmiform">
+                    <h4>Oblicz swoje zaporzebowanie BRM / CPM</h4>
+
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Podaj wagę</label>
+                        <input type="text" class="form-control" id="weight" placeholder="w kilogramach">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Podaj wzrost</label>
+                        <input type="text" class="form-control" id="growth" placeholder="w centymetrach">
+                    </div>
+                    <div class="form-group">
+                            <label for="formGroupExampleInput2">Podaj wiek</label>
+                            <input type="number" class="form-control" name="quantity" min="1" placeholder="w latach" id="age">
+
+                    </div>
+                    <div class="form-group radioCPMBRM" id="sex">
+                            <label for="female">Wybierz płeć:</label><br>
+                            <input id="female" type="radio" name="sex" value="female" checked>&nbsp;&nbsp;Kobieta<br>
+                            <input id="male" type="radio" name="sex" value="male">&nbsp;&nbsp;Mężczyzna<br>
+                    </div>
+                    <div class="form-group radioCPMBRM" id="activity">
+                        <label for="activity">Rodzaj aktywności fizycznej:</label><br>
+                        <input id="level0" type="radio" name="activity" value="Brak aktywności" checked>&nbsp;&nbsp;Brak aktywności, praca siedząca<br>
+                        <input id="level1" type="radio" name="activity" value="Niska aktywność">&nbsp;&nbsp;Niska aktywność (praca siedząca z 1-2 treningami w tygodniu)<br>
+                        <input id="level2" type="radio" name="activity" value="Średnia aktywność">&nbsp;&nbsp;Średnia aktywność (praca siedząca z treningami 3-4 razy w tygodniu)<br>
+                        <input id="level3" type="radio" name="activity" value="Wysoka aktywność">&nbsp;&nbsp;Wysoka aktywność (praca fizyczna z 3-4 treningami w tygodniu)<br>
+                        <input id="level4" type="radio" name="activity" value="Bardzo wysoka aktywność">&nbsp;&nbsp;Bardzo wysoka aktywność (zawodowi sportowcy, osoby codziennie trenujące)<br>
+                    </div>
+                    <a href="" class="btn btn-primary buttonwhite" onfocus="BrmCpm()" type="submit">Oblicz</a>
+               </form>
+          </div>
+      </div>
+   </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="ModalInfoCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">BRM/CPM - Info</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="infocontent1" class="modal-body">
+                @* This field generating in js  *@
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalPromo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">BMI - Promocja</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="infocontent" class="modal-body">
+                <h4 class="text-center">Zawsze może być lepiej [...]</h4>
+                <h5 class="text-center">Możesz skorzystać z świetnej promocji poniżej:</h5>
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-diet" role="tab" aria-controls="nav-diet" aria-selected="true">Dieta</a>
+                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-sport" role="tab" aria-controls="nav-sport" aria-selected="false">Ćwiczenia</a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div class="row" id="leftcontent2">
+        <div class="col-md-3">
+            <div class="card text-center">
+                <img class="card-img-top" src="~/Content/img/belly-body-calories-diet-42069.jpeg" alt="Card image cap" style="width:100%">
+                <div class="card-block leftconentincardblock">
+                    <h4 class="card-title">Oblicz idealną wagę</h4>
+                    <p class="card-text">Oblicz swoje BMI i poznaj w pełni swoje ciało. </p>
+
+                    <a href="@Url.Action("bmi", "Home")" class="btn btn-primary buttoninleftcontent">Oblicz kcal</a>
+                </div>
+            </div>
+        </div>
+    </div>*@
