@@ -1,0 +1,58 @@
+﻿@model IEnumerable<bmi_kcal.Models.ResultBMI>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ResultBMIValue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResultBMIName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SaveDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Growth)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResultBMIValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResultBMIName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SaveDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Growth)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ResultBMIID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ResultBMIID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ResultBMIID })
+        </td>
+    </tr>
+}
+
+</table>

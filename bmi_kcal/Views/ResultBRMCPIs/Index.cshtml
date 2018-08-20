@@ -1,0 +1,70 @@
+﻿@model IEnumerable<bmi_kcal.Models.ResultBRMCPI>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ResultBRMValue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResultCPIValue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SaveDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Growth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SelectedActivity)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResultBRMValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResultCPIValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SaveDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Growth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SelectedActivity)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ResultBRMCPIID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ResultBRMCPIID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ResultBRMCPIID })
+        </td>
+    </tr>
+}
+
+</table>
