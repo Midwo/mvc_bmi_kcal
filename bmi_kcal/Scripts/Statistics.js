@@ -12,7 +12,7 @@ window.onload = function () {
 
     var myVar;
 
-    myVar = setTimeout(showPage, 1500);
+    myVar = setTimeout(showPage, 1600);
 
 
 
