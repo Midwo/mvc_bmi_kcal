@@ -5,6 +5,10 @@ var valueForActivity;
 var brm;
 var cpm;
 var noEnterData;
+var textInSecondContentModal;
+var levelactivity;
+var diet1, diet2, diet3;
+
 function BrmCpm() {
     noEnterData = false;
     var growth = document.getElementById("growth").value;
@@ -26,25 +30,30 @@ function BrmCpm() {
         if (document.getElementById('level0').checked) {
             valueForActivity = 1.2;
             selectedActivity = document.getElementById('level0').value;
+            levelactivity = 0;
         }
         else if (document.getElementById('level1').checked) {
             valueForActivity = 1.35;
             selectedActivity = document.getElementById('level1').value;
+            levelactivity = 1;
 
         }
         else if (document.getElementById('level2').checked) {
             valueForActivity = 1.55;
             selectedActivity = document.getElementById('level2').value;
+            levelactivity = 2;
 
         }
         else if (document.getElementById('level3').checked) {
             valueForActivity = 1.75;
             selectedActivity = document.getElementById('level3').value;
+            levelactivity = 3;
 
         }
         else if (document.getElementById('level4').checked) {
             valueForActivity = 2.05;
             selectedActivity = document.getElementById('level4').value;
+            levelactivity = 4;
 
         }
         brm = ((9.99 * weight) + (6.25 * growth) - (4.92 * age) + valueForSex).toFixed(2);
@@ -62,6 +71,9 @@ function BrmCpm() {
         textInFirstContentModal = '<h5 class="text-center">Twoje BRM (podstawowa przemiany materii) wynosi: ' + brm + ' kcal</h5 ><h5 class="text-center">Oraz CPM (całkowica przemiana materii) wynosi: ' + cpm + ' kcal</h5 ><i id="ScoreContent" class="fas fa-dumbbell fa-4x"></i>';
         var std = {};
         // std.Number = $("#Number").val();
+        diet1 = (parseFloat(cpm) - 150);
+        diet2 = cpm;
+        diet3 = (parseFloat(cpm) + 150);
         brm = brm.replace(".", ",");
         cpm = cpm.replace(".", ",");
         std.ResultBRMValue = brm;
@@ -90,4 +102,25 @@ function BrmCpm() {
     $('#ModalInfoCenter').modal('show');
 
 
+}
+
+$(document).ready(function () {
+    $('#ModalInfoCenter').on('hidden.bs.modal', function () {
+        if (noEnterData == false) {
+            ShowPromo();
+        }
+    });
+
+});
+
+function ShowPromo() {
+    setTimeout(ShowPromoContent, 800);
+
+}
+
+function ShowPromoContent() {
+
+    textInSecondContentModal = '<h4 class="text-center">Specjalna oferta!</h4><h5 class="text-center">Możesz skorzystać z świetnej promocji diet poniżej:</h5><nav><div class="nav nav-tabs" id="nav-tab" role="tablist"><a class="nav-item nav-link active" id="nav-diet1-tab" data-toggle="tab" href="#nav-diet1" role="tab" aria-controls="nav-diet1" aria-selected="true">Deficytowa</a><a class="nav-item nav-link" id="nav-diet2-tab" data-toggle="tab" href="#nav-diet2" role="tab" aria-controls="nav-diet2" aria-selected="false">Utrzymująca</a><a class="nav-item nav-link" id="nav-diet3-tab" data-toggle="tab" href="#nav-diet3" role="tab" aria-controls="nav-diet3" aria-selected="false">Wzrostowa</a></div></nav><div class="tab-content"><div class="tab-pane fade show active" id="nav-diet1" role="tabpanel" aria-labelledby="nav-diet1-tab"><div class="card" id="cardcenter" style="width: 18rem;"><div class="card-body"><h5 class="card-title">Dieta deficytowa</h5><h6 class="card-subtitle mb-2 text-muted">Zapewnimy Ci catering na: ' + diet1 + ' kcal.</h6><p class="card-text">Z naszą dietą bezpiecznie i prosto zmniejszysz swoją wagę. Twoja dieta, to 150 kcal dziennie deficytu!</p><a href="https://mdwojak.pl/" class="card-link">Zamów już teraz</a></div></div></div><div class="tab-pane fade" id="nav-diet2" role="tabpanel" aria-labelledby="nav-diet2-tab"><div class="card" id="cardcenter" style="width: 18rem;"><div class="card-body"><h5 class="card-title">Dieta stagnacyjna</h5><h6 class="card-subtitle mb-2 text-muted">Zapewnimy Ci catering na: ' + diet2 + ' kcal.</h6><p class="card-text">Z naszą dietą bezpiecznie i prosto utrzymasz swoją wagę. Twoja dieta, to dokładnie Twoje CPM!</p><a href="https://mdwojak.pl/" class="card-link">Zamów już teraz</a></div></div></div><div class="tab-pane fade" id="nav-diet3" role="tabpanel" aria-labelledby="nav-diet3-tab"><div class="card" id="cardcenter" style="width: 18rem;"><div class="card-body"><h5 class="card-title">Dieta wzrostowa</h5><h6 class="card-subtitle mb-2 text-muted">Zapewnimy Ci catering na: ' +diet3+' kcal.</h6><p class="card-text">Z naszą dietą bezpiecznie i prosto zwiększych swoją wagę. Twoja dieta to przekraczanie CPM aż o 150 kcal!</p><a href="https://mdwojak.pl/" class="card-link">Zamów już teraz</a></div></div></div></div>';
+    document.getElementById("infocontent").innerHTML = textInSecondContentModal;
+    $('#ModalPromo').modal('show');
 }

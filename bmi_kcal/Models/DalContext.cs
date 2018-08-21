@@ -8,7 +8,7 @@ namespace bmi_kcal.Models
 {
     public class DalContext: DbContext
     {
-        public DbSet<ResultBMI> resultBMIs { get; set; }
-        public DbSet<ResultBRMCPM> resultBRMCPMs { get; set; }
+        public DbSet<ResultBMI> ResultBMIs { get; set; }
+        public DbSet<ResultBRMCPM> ResultBRMCPMs { get; set; }
     }
 }

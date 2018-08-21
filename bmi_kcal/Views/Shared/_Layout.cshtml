@@ -6,13 +6,13 @@
     <title>@ViewBag.Title - Michał Dwojak</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/Chart.js"></script>
+    <script src="~/Scripts/Chart.min.js"></script>
     <script src="~/Scripts/jquery-3.3.1.js"></script>
-    <script src="~/Scripts/cpm.js"></script>
-    <script src="~/Scripts/bmi.js"></script>
     <link href="~/Fonts/fontawesome-free-5.2.0-web/css/all.css" rel="stylesheet" />
 
 </head>
-<body>
+<body class="bg1">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="@Url.Action("Index","Home")">
             <img src="~/favicon.ico" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -25,10 +25,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="@Url.Action("bmi", "Home")">Oblicz BMI<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="@Url.Action("Bmi", "Home")">Oblicz BMI<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("kcal", "Home")">Zobacz kalorykę</a>
+                    <a class="nav-link" href="@Url.Action("Kcal", "Home")">Zobacz kalorykę</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Statistics", "Home")">Statystki</a>
                 </li>
             </ul>
 

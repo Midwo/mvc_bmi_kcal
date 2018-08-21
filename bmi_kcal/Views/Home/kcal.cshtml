@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "Oblicz CPM/BRM";
 }
+<script src="~/Scripts/cpm.js"></script>
 
 <div class="row" id="leftcontentCPM">
     <div class="col-md-3">
@@ -19,14 +20,14 @@
                         <input type="text" class="form-control" id="growth" placeholder="w centymetrach">
                     </div>
                     <div class="form-group">
-                            <label for="formGroupExampleInput2">Podaj wiek</label>
-                            <input type="number" class="form-control" name="quantity" min="1" placeholder="w latach" id="age">
+                        <label for="formGroupExampleInput2">Podaj wiek</label>
+                        <input type="number" class="form-control" name="quantity" min="1" placeholder="w latach" id="age">
 
                     </div>
                     <div class="form-group radioCPMBRM" id="sex">
-                            <label for="female">Wybierz płeć:</label><br>
-                            <input id="female" type="radio" name="sex" value="female" checked>&nbsp;&nbsp;Kobieta<br>
-                            <input id="male" type="radio" name="sex" value="male">&nbsp;&nbsp;Mężczyzna<br>
+                        <label for="female">Wybierz płeć:</label><br>
+                        <input id="female" type="radio" name="sex" value="female" checked>&nbsp;&nbsp;Kobieta<br>
+                        <input id="male" type="radio" name="sex" value="male">&nbsp;&nbsp;Mężczyzna<br>
                     </div>
                     <div class="form-group radioCPMBRM" id="activity">
                         <label for="activity">Rodzaj aktywności fizycznej:</label><br>
@@ -37,10 +38,10 @@
                         <input id="level4" type="radio" name="activity" value="Bardzo wysoka aktywność">&nbsp;&nbsp;Bardzo wysoka aktywność (zawodowi sportowcy, osoby codziennie trenujące)<br>
                     </div>
                     <a href="" class="btn btn-primary buttonwhite" onfocus="BrmCpm()" type="submit">Oblicz</a>
-               </form>
-          </div>
-      </div>
-   </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 
@@ -50,7 +51,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">BRM/CPM - Info</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">BMI - Info</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -70,23 +71,55 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">BMI - Promocja</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">CPM/BRM - Promocja</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div id="infocontent" class="modal-body">
-                <h4 class="text-center">Zawsze może być lepiej [...]</h4>
+                @*<h4 class="text-center">Specjalna oferta!</h4>
                 <h5 class="text-center">Możesz skorzystać z świetnej promocji poniżej:</h5>
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-diet" role="tab" aria-controls="nav-diet" aria-selected="true">Dieta</a>
-                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-sport" role="tab" aria-controls="nav-sport" aria-selected="false">Ćwiczenia</a>
+                        <a class="nav-item nav-link active" id="nav-diet1-tab" data-toggle="tab" href="#nav-diet1" role="tab" aria-controls="nav-diet1" aria-selected="true">Dieta1</a>
+                        <a class="nav-item nav-link" id="nav-diet2-tab" data-toggle="tab" href="#nav-diet2" role="tab" aria-controls="nav-diet2" aria-selected="false">Dieta2</a>
+                        <a class="nav-item nav-link" id="nav-diet3-tab" data-toggle="tab" href="#nav-diet3" role="tab" aria-controls="nav-diet3" aria-selected="false">Dieta3</a>
                     </div>
                 </nav>
-                <div class="tab-content" id="nav-tabContent">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="nav-diet1" role="tabpanel" aria-labelledby="nav-diet1-tab">
+                        <div class="card" id="cardcenter" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">' + title1 + '</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">' + subtitle1 + '</h6>
+                                <p class="card-text">'+cardtext1+'</p>
+                                <a href="https://mdwojak.pl/" class="card-link">Zamów już teraz</a>
+                            </div>
+                        </div>
 
-                </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-diet2" role="tabpanel" aria-labelledby="nav-diet2-tab">
+                        <div class="card" id="cardcenter" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">'+title2'</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">'+subtitle2+'</h6>
+                                <p class="card-text">'+cardtext2+'</p>
+                                <a href="https://mdwojak.pl/" class="card-link">Zamów już teraz</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-diet3" role="tabpanel" aria-labelledby="nav-diet3-tab">
+                        <div class="card" id="cardcenter" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">'+title3+'</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">'+subtitle3+'</h6>
+                                <p class="card-text">'+cardtext3+'</p>
+                                <a href="https://mdwojak.pl/" class="card-link">Zamów już teraz</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
