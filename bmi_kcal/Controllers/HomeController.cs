@@ -17,6 +17,11 @@ namespace bmi_kcal.Controllers
             return View();
         }
 
+        public ActionResult Policy()
+        {
+            return View();
+        }
+
         public ActionResult Bmi()
         {
             return View();
