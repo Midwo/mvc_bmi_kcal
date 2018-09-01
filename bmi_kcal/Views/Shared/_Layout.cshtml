@@ -14,7 +14,7 @@
 </head>
 <body class="bg1">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="@Url.Action("Index","Home")">
+        <a class="navbar-brand" href="https://www.mdwojak.pl/">
             <img src="~/favicon.ico" width="30" height="30" class="d-inline-block align-top" alt="">
             mdwojak.pl
         </a>
@@ -25,7 +25,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="@Url.Action("Bmi", "Home")">Oblicz BMI<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="@Url.Action("Index", "Home")">Główna strona<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Bmi", "Home")">Zobacz kalorykę</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="@Url.Action("Kcal", "Home")">Zobacz kalorykę</a>
@@ -45,11 +48,14 @@
     </div>
     <!-- Footer -->
     <footer class="footer">
+       
+        <span class="text-muted">
+            &copy; @DateTime.Now.Year - Dwojak Michał. 
+            <a href='@Url.Action("Policy", "Home")'>Polityka prywatności</a>
 
-
-            <span class="text-muted">&copy; @DateTime.Now.Year - Dwojak Michał. <a href="https://www.mdwojak.pl/">www.mdwojak.pl</a></span>
-
-        </footer>
+        </span>    
+       
+    </footer>
 
     <!-- Footer -->
     @Scripts.Render("~/bundles/jquery")
